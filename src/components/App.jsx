@@ -6,10 +6,11 @@ import PopupWithForm from '../PopupWithForm';
 import ImagePopup from './ImagePopup';
 
 function App() {
+  // добавим в стейт переменные состояния попапов
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
-
+  
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
   }
@@ -38,32 +39,6 @@ function App() {
           onAddPlaceClick={handleAddPlaceClick}
         />
         <Footer />
-        {/*Темплейт карточки*/}
-        <template id="card">
-          <article className="card">
-            <button
-              className="card__delete"
-              type="button"
-            >
-            </button>
-            <img
-              src="#"
-              alt=""
-              className="card__photo"
-            />
-            <div className="card__place">
-              <h2 className="card__name"></h2>
-              <div className="card__like-container">
-                <button
-                  className="card__like"
-                  type="button"
-                >
-                </button>
-                <div className="card__like-counter"></div>
-              </div>
-            </div>
-          </article>
-        </template>
         {/* попап Развернуть карточку */}
         <ImagePopup />
         {/* попап Удалить карточку */}
