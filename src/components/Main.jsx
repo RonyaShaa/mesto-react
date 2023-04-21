@@ -5,7 +5,7 @@ import pluse from '../images/pluse.svg';
 import { api } from '../utils/Api.js';
 import Card from './Card';
 
-function Main({onEditAvatarClick, onEditProfileClick, onAddPlaceClick}) {
+function Main({onEditAvatarClick, onEditProfileClick, onAddPlaceClick, onCardClick}) {
   // добавим в стейт переменные состояния для данных пользователя
   const [userName, setUserName] = React.useState();
   const [userDescription, setUserDescription] = React.useState();
@@ -68,12 +68,12 @@ function Main({onEditAvatarClick, onEditProfileClick, onAddPlaceClick}) {
       </section>
       <section className="cards">
         {
-          cards.map(card => {
+          cards.map((card) => {
             return (
-              <Card 
-              name={card.name}
-              link={card.link}
-              likes={card.likes.length}
+              <Card
+                key={card.id}
+                card={card}
+                onCardClick={onCardClick}
               />
             )
           })
