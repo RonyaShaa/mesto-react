@@ -71,7 +71,7 @@ function Main({onEditAvatarClick, onEditProfileClick, onAddPlaceClick, onCardCli
           cards.map((card) => {
             return (
               <Card
-                key={card.id}
+                key={card._id}
                 card={card}
                 onCardClick={onCardClick}
               />

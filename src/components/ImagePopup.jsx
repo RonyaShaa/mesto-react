@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ImagePopup(onClose, card, isOpen) {
+function ImagePopup({onClose, card, isOpen}) {
 
 
   return (
