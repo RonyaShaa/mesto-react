@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import PopupWithForm from '../PopupWithForm';
+import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 
 function App() {
@@ -69,6 +69,7 @@ function App() {
         <PopupWithForm
           title='Редактировать профиль'
           name='edit-profile'
+          buttonText='Сохранить'
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
         >
@@ -94,12 +95,12 @@ function App() {
             required
           />
           <span id="input-interests-error" className="popup__error"></span>
-          <button className="popup__button" type="submit">Сохранить</button>
         </PopupWithForm>
         {/* попап Обновить фото профиля */}
         <PopupWithForm
           title='Обновить аватар'
           name='update-avatar'
+          buttonText='Сохранить'
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
         >
@@ -112,12 +113,12 @@ function App() {
             required
           />
           <span id="input-update-avatar-error" className="popup__error"></span>
-          <button className="popup__button" type="submit">Сохранить</button>
         </PopupWithForm>
         {/* попап Добавить карточку */}
         <PopupWithForm
           title='Новое место'
           name='add-card'
+          buttonText='Создать'
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
         >
@@ -141,7 +142,6 @@ function App() {
             required
           />
           <span id="input-link-error" className="popup__error"></span>
-          <button className="popup__button" type="submit">Сохранить</button>
         </PopupWithForm>
       </div>
     </div>

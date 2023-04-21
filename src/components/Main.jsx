@@ -1,5 +1,4 @@
 import React from 'react';
-import photoProfile from '../images/photo-profile.jpg';
 import editButton from '../images/Edit__Button.svg';
 import pluse from '../images/pluse.svg';
 import { api } from '../utils/Api.js';
@@ -7,9 +6,9 @@ import Card from './Card';
 
 function Main({onEditAvatarClick, onEditProfileClick, onAddPlaceClick, onCardClick}) {
   // добавим в стейт переменные состояния для данных пользователя
-  const [userName, setUserName] = React.useState();
-  const [userDescription, setUserDescription] = React.useState();
-  const [userAvatar, setUserAvatar] = React.useState();
+  const [userName, setUserName] = React.useState('');
+  const [userDescription, setUserDescription] = React.useState('');
+  const [userAvatar, setUserAvatar] = React.useState('');
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
@@ -17,11 +16,9 @@ function Main({onEditAvatarClick, onEditProfileClick, onAddPlaceClick, onCardCli
       .then(([userData, cardData]) => {
         //получаем объект с данными пользователя(name, about, avatar)
         //получим массив карточек с сервера
-        console.log(cardData);
         setUserName(userData.name);
         setUserDescription(userData.about);
         setUserAvatar(userData.avatar);
-        console.log(cardData)
         setCards(cardData);
       }).catch((err) => {
         console.log(err); // выведем ошибку в консоль 
