@@ -6,6 +6,7 @@ import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { api } from '../utils/Api.js';
+import EditProfilePopup from './EditProfilePopup';
 
 function App() {
   // добавим в стейт переменные состояния попапов
@@ -83,6 +84,15 @@ function App() {
       });
   }
 
+  function handleUpdateUser(userData){
+    api.setUserInfo(userData)
+      .then((res)=>{
+        debugger;
+        setCurrentUser(res);
+        closeAllPopups();
+      })
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -104,6 +114,8 @@ function App() {
             cards={cards}
           />
           <Footer />
+          {/* попап Редактировать профиль */}
+          <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser}/>
           {/* попап Развернуть карточку */}
           <ImagePopup
             card={selectedCard}
@@ -116,37 +128,6 @@ function App() {
             name='delete-card'
           >
             <button className="popup__button-yes" type="submit">Да</button>
-          </PopupWithForm>
-          {/* попап Редактировать профиль */}
-          <PopupWithForm
-            title='Редактировать профиль'
-            name='edit-profile'
-            buttonText='Сохранить'
-            isOpen={isEditProfilePopupOpen}
-            onClose={closeAllPopups}
-          >
-            <input
-              id="input-name"
-              type="text"
-              className="popup__input-text popup__input-text_type_name"
-              placeholder="Введите имя"
-              name="name"
-              // minlength="2"
-              // maxlength="40"
-              required
-            />
-            <span id="input-name-error" className="popup__error"></span>
-            <input
-              id="input-interests"
-              type="text"
-              className="popup__input-text popup__input-text_type_interests"
-              placeholder="Введите интересы"
-              name="about"
-              // minlength="2"
-              // maxlength="200"
-              required
-            />
-            <span id="input-interests-error" className="popup__error"></span>
           </PopupWithForm>
           {/* попап Обновить фото профиля */}
           <PopupWithForm
