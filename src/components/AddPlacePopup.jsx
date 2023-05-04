@@ -5,6 +5,10 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
 
   const [values, setValues] = React.useState({});
 
+  React.useEffect(() => {
+    setValues({ name: '', link: '' })
+  }, [isOpen]);
+
   function handleChange(e) {
     setValues({
       ...values,
@@ -36,7 +40,7 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
         className="popup__input-text popup__input-text_type_mesto"
         placeholder="Название"
         name="name"
-        value={values.name}
+        value={values.name || ""}
         onChange={handleChange}
         // minlength="2"
         // maxlength="30"
@@ -49,7 +53,7 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
         className="popup__input-text popup__input-text_type_link"
         placeholder="Ссылка на картинку"
         name="link"
-        value={values.link}
+        value={values.link || ""}
         onChange={handleChange}
         required
       />
