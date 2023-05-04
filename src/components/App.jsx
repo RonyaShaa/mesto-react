@@ -7,6 +7,8 @@ import ImagePopup from './ImagePopup';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { api } from '../utils/Api.js';
 import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
+
 
 function App() {
   // добавим в стейт переменные состояния попапов
@@ -87,10 +89,21 @@ function App() {
   function handleUpdateUser(userData){
     api.setUserInfo(userData)
       .then((res)=>{
-        debugger;
         setCurrentUser(res);
         closeAllPopups();
-      })
+      }).catch((err) => {
+        console.log(err); // выведем ошибку в консоль 
+      });
+  }
+
+  function handleUpdateAvatar(userData){
+    api.editAvatar(userData)
+      .then((res) =>{
+        setCurrentUser(res);
+        closeAllPopups();
+      }).catch((err) => {
+        console.log(err); // выведем ошибку в консоль 
+      });
   }
 
   return (
@@ -130,23 +143,7 @@ function App() {
             <button className="popup__button-yes" type="submit">Да</button>
           </PopupWithForm>
           {/* попап Обновить фото профиля */}
-          <PopupWithForm
-            title='Обновить аватар'
-            name='update-avatar'
-            buttonText='Сохранить'
-            isOpen={isEditAvatarPopupOpen}
-            onClose={closeAllPopups}
-          >
-            <input
-              id="input-update-avatar"
-              type="url"
-              className="popup__input-text popup__input-text_type_update-avatar"
-              placeholder="Ссылка на картинку"
-              name="link"
-              required
-            />
-            <span id="input-update-avatar-error" className="popup__error"></span>
-          </PopupWithForm>
+          <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}/>
           {/* попап Добавить карточку */}
           <PopupWithForm
             title='Новое место'
