@@ -11,7 +11,6 @@ function ImagePopup({onClose, card, isOpen}) {
         onClose();
       }
     }
-    
     document.addEventListener('keydown', closeByEsc)
     //обязательно удаляем обработчик
     return () => document.removeEventListener('keydown', closeByEsc)

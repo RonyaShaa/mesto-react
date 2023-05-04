@@ -21,12 +21,6 @@ function App() {
   //добавим в стейт переменную состояния текущего пользователя
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
-  // React.useEffect(() => {
-  //   api.getUserInfo()
-  //   .then((userData) => {
-  //     setCurrentUser(userData)
-  //   })
-  // })
 
   React.useEffect(() => {
     Promise.all([api.getUserInfo(), api.getInitialCards()])

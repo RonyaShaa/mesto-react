@@ -83,22 +83,6 @@ class Api {
       .then(this._checkResponse);
     }
   }
-  // //поставить лайк
-  // putLike(cardId) {
-  //   return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-  //     method: 'PUT',
-  //     headers: this._headers,
-  //   })
-  //   .then(this._checkResponse);
-  // }
-  // //удалить лайк
-  // deleteLike(cardId) {
-  //   return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-  //     method: 'DELETE',
-  //     headers: this._headers,
-  //   })
-  //   .then(this._checkResponse);
-  // }
  
   //обновление аватара пользователя
   editAvatar(data) {

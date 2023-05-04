@@ -6,35 +6,6 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 
 function Main({onEditAvatarClick, onEditProfileClick, onAddPlaceClick, onCardClick, onCardLike, onCardDelete, cards}) {
-  // добавим в стейт переменные состояния для данных пользователя
-  // const [userName, setUserName] = React.useState('');
-  // const [userDescription, setUserDescription] = React.useState('');
-  // const [userAvatar, setUserAvatar] = React.useState('');
-  // const [cards, setCards] = React.useState([]);
-  
-  // React.useEffect(() => {
-  //   Promise.all([api.getUserInfo(), api.getInitialCards()])
-  //     .then(([userData, cardData]) => {
-  //       //получаем объект с данными пользователя(name, about, avatar)
-  //       //получим массив карточек с сервера
-  //       setUserName(userData.name);
-  //       setUserDescription(userData.about);
-  //       setUserAvatar(userData.avatar);
-  //       setCards(cardData);
-  //     }).catch((err) => {
-  //       console.log(err); // выведем ошибку в консоль 
-  //     });
-  // }, []);//при перерендере будет проверяться массив зависимостей
-
-  // React.useEffect(() => {
-  //   api.getInitialCards()
-  //     .then((cardData) => {
-  //       //получим массив карточек с сервера
-  //       setCards(cardData);
-  //     }).catch((err) => {
-  //       console.log(err); // выведем ошибку в консоль 
-  //     })
-  // }, []);//при перерендере будет проверяться массив зависимостей
 
   //подписываемся на контекст
   const currentUser = React.useContext(CurrentUserContext);

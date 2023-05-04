@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 function PopupWithForm({title, name ,buttonText, children, isOpen , onClose, onSubmit}) {
+  
   React.useEffect(() => {
     //ограничиваем навешивание обработчика: если не открыт, то не нужно навешивать
     if(!isOpen) return;
@@ -10,7 +11,6 @@ function PopupWithForm({title, name ,buttonText, children, isOpen , onClose, onS
         onClose();
       }
     }
-    
     document.addEventListener('keydown', closeByEsc)
     //обязательно удаляем обработчик
     return () => document.removeEventListener('keydown', closeByEsc)

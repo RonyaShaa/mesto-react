@@ -27,11 +27,6 @@ function Card({card, onCardClick, onCardLike, onCardDelete}) {
 
   return (
     <article className="card">
-      {/* <button
-        className="card__delete"
-        type="button"
-      >
-      </button> */}
       {/* в разметке используем переменную для условного рендеринга */}
       {isOwn && <button className='card__delete' onClick={handleDeleteClick} />} 
       <img
