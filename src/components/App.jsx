@@ -8,6 +8,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { api } from '../utils/Api.js';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
+import AddPlacePopup from './AddPlacePopup';
 
 
 function App() {
@@ -106,6 +107,16 @@ function App() {
       });
   }
 
+  function handleAddPlaceSubmit(cardData){
+    api.addNewCard(cardData)
+      .then((newCard) => {
+        setCards([newCard, ...cards]);
+        closeAllPopups();
+      }).catch((err) => {
+        console.log(err); // выведем ошибку в консоль 
+      });
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -145,34 +156,7 @@ function App() {
           {/* попап Обновить фото профиля */}
           <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}/>
           {/* попап Добавить карточку */}
-          <PopupWithForm
-            title='Новое место'
-            name='add-card'
-            buttonText='Создать'
-            isOpen={isAddPlacePopupOpen}
-            onClose={closeAllPopups}
-          >
-            <input
-              id="input-mesto"
-              type="text"
-              className="popup__input-text popup__input-text_type_mesto"
-              placeholder="Название"
-              name="name"
-              // minlength="2"
-              // maxlength="30"
-              required
-            />
-            <span id="input-mesto-error" className="popup__error"></span>
-            <input
-              id="input-link"
-              type="url"
-              className="popup__input-text popup__input-text_type_link"
-              placeholder="Ссылка на картинку"
-              name="link"
-              required
-            />
-            <span id="input-link-error" className="popup__error"></span>
-          </PopupWithForm>
+          <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit}/>
         </div>
       </div>
     </CurrentUserContext.Provider>
